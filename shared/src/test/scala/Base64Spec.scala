@@ -5,40 +5,40 @@ object MyTestSuite extends TestSuite {
 
   val tests = TestSuite {
 
-    'encode1 {
+    "encode1" - {
       assert("ABCDEFG".getBytes.toBase64 == ("QUJDREVGRw=="))
     }
 
 
-    'encode2 {
+    "encode2" - {
       assert("homuho".getBytes.toBase64 == ("aG9tdWhv"))
     }
 
-    'encode3 {
+    "encode3" - {
       assert("hogepiyofoobar".getBytes.toBase64 == ("aG9nZXBpeW9mb29iYXI="))
     }
 
 
     // Decoder tests
 
-    'decode4 {
+    "decode4" - {
       assert("aG9nZXBpeW9mb29iYXI=".toByteArray sameElements ("hogepiyofoobar".getBytes))
     }
 
 
-    'decode5 {
+    "decode5" - {
       assert("+/+/+/+/".toByteArray.sameElements(("-_-_-_-_").toByteArray(base64Url)))
     }
 
 
     //RFC 4648    Test vectors
 
-    'testBigInt {
+    "testBigInt" - {
       assert(BigInt("14fb9c03d97e", 16).toByteArray.toBase64 == ("FPucA9l+"))
     }
 
 
-    'test7 {
+    "test7" - {
       val testVectors = Seq("" -> "",
         "f" -> "Zg==",
         "fo" -> "Zm8=",
@@ -61,7 +61,7 @@ object MyTestSuite extends TestSuite {
       }
     }
 
-    'testunpaddedDecode {
+    "testunpaddedDecode" - {
       val testVectors = Seq("" -> "",
         "f" -> "Zg==",
         "fo" -> "Zm8=",
@@ -77,7 +77,7 @@ object MyTestSuite extends TestSuite {
       }
     }
 
-    'testBase64UrlPadding {
+    "testBase64UrlPadding" - {
       val testVectors = Seq("" -> "",
         "f" -> "Zg%3D%3D",
         "fo" -> "Zm8%3D",
@@ -93,7 +93,7 @@ object MyTestSuite extends TestSuite {
       }
     }
 
-    'testBase64UrlDecoding {
+    "testBase64UrlDecoding" - {
       val testVectors = Seq("" -> "",
         "f" -> "Zg%3D%3D",
         "fo" -> "Zm8%3D",
